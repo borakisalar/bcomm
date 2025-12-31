@@ -36,6 +36,6 @@ bcomm bloom file_A.txt file_B.txt
 2.  **Phase 2**: Streams the second file and checks each line against the Bloom Filter.
 3.  **Phase 3**: If the filter returns a positive result (potential match), it performs an exact lookup in the Hash Set to eliminate false positives.
 
-## Acknowledgments
+## References
 Special thanks to **Peter Scott** for the implementation of the MurmurHash3 algorithm used in this project.
 Original source: [https://github.com/PeterScott/murmur3](https://github.com/PeterScott/murmur3)
