@@ -67,6 +67,7 @@ int main(int argc, char *argv[]) {
   long long lines_processed = 0;
   long long bloom_rejections = 0;
   long long matches_found = 0;
+  long long bloom_false_positives = 0;
 
   auto start_time = chrono::high_resolution_clock::now();
 
@@ -80,6 +81,8 @@ int main(int argc, char *argv[]) {
 
     if (set_file1.find(line) != set_file1.end()) {
       matches_found++;
+    } else {
+      bloom_false_positives++;
     }
   }
 
@@ -91,6 +94,7 @@ int main(int argc, char *argv[]) {
   cout << "Time:            " << elapsed.count() << " seconds" << endl;
   cout << "Lines Processed: " << lines_processed << endl;
   cout << "Bloom Rejections:" << bloom_rejections << endl;
+  cout << "False Positives: " << bloom_false_positives << endl;
   cout << "Matches Found:   " << matches_found << endl;
   cout << "Efficiency:      Skipped "
        << (double)bloom_rejections / lines_processed * 100 << "% of work."
